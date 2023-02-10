@@ -35,7 +35,8 @@ export default function HomeScreen() {
         inactiveTintColor: "gray",
       }}
     >
-      <Tabs.Screen name="Posts" component={Posts} />
+      <Tabs.Screen name="Posts" component={Posts}
+       />
       <Tabs.Screen name="CreatePost" component={CreatePost} />
       <Tabs.Screen name="Profile" component={Profile} />
     </Tabs.Navigator>

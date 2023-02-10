@@ -21,7 +21,15 @@ export default () => {
         />
         <MainStack.Screen name="Login" component={Login} />
         <MainStack.Screen name="Home" component={HomeScreen} />
-   <MainStack.Screen name="Posts" component={Posts} />
+   <MainStack.Screen name="Posts" component={Posts}
+   options={{title:"Публикации",
+   headerStyle: {
+     backgroundColor: "#f4511e",
+   },  headerTintColor: "#fff",
+   headerTitleStyle: {
+     fontWeight: "bold",
+     fontSize: 20,
+   },}} />
         <MainStack.Screen name="CreatePost" component={CreatePost} />
         <MainStack.Screen name="Profile" component={Profile} />
         
