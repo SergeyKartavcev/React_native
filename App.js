@@ -8,6 +8,7 @@ import HomeScreen from "./Screens/HomeScreen";
 import CreatePost from "./Screens/CreatePostsScreen";
 import Profile from "./Screens/ProfileScreen";
 import Posts from "./Screens/PostsScreen";
+
 const MainStack = createStackNavigator();
 
 export default () => {
@@ -22,11 +23,19 @@ export default () => {
         <MainStack.Screen name="Login" component={Login} 
         options={{ headerShown: false }}/>
 
-        <MainStack.Screen name="Home" component={HomeScreen}/>
+        <MainStack.Screen name="Home" component={HomeScreen}
+        options={{ headerShown: false }}/>
         <MainStack.Screen name="Публикации" component={Posts}
-        options={{ title: "Войти", headerStyle: {backgroundColor: "#FFFFFF",} }} />
+      
+        options={{  headerStyle: {backgroundColor: "#FFFFFF",}, headerRight: () => (
+          <Button
+            onPress={() => alert('This is a button!')}
+            title="Info"
+            color="red"
+          />
+        ), }} />
         <MainStack.Screen name="Создать пост" component={CreatePost}
-        options={{ title: "Войти", headerStyle: {backgroundColor: "#FFFFFF",} }} />
+        options={{ headerStyle: {backgroundColor: "#FFFFFF",} }} />
         <MainStack.Screen name="Профиль" component={Profile}
         options={{ title: "Войти", headerStyle: {backgroundColor: "#FFFFFF",} }} />
         

@@ -7,11 +7,11 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  Image,
-  Button,
+  ImageBackground,
   TouchableOpacity,
   Text,
 } from "react-native";
+import { max } from "react-native-reanimated";
 
 export default function Login({ navigation }) {
   const [name, setName] = useState("");
@@ -20,63 +20,73 @@ export default function Login({ navigation }) {
   const nameHandler = (text) => setName(text);
   const passwordHandler = (text) => setPassword(text);
 
-  // const onLogin = () => {
-  //   Alert.alert("Credentials", `${name} + ${password}`);
-  // };
-
   const image = { uri: "https://reactjs.org/logo-og.png" };
-  
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>  
-      <Image
-            source={require("../../image/PhotoBG.png")}
-            resizeMode="cover"
-            style={styles.image}
-          ></Image>
-                 <View style={{
-        flexDirection: 'row',
-        height: 349,
-        padding: 20,
-        backgroundColor: "#FFFFFF",
-        borderTopLeftRadius: 25 ,
-        borderTopRightRadius: 25,
-       
-      }}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS == "ios" ? "padding" : "height"}
+      <View style={styles.container}>
+        <ImageBackground
+          source={require("../../image/PhotoBG.png")}
+          resizeMode="cover"
+          style={styles.image}
         >
-          <TextInput
-            value={name}
-            onChangeText={nameHandler}
-            placeholder="Username"
-            style={styles.input}
-          />
-          <TextInput
-            value={password}
-            onChangeText={passwordHandler}
-            placeholder="Password"
-            secureTextEntry={true}
-            style={styles.input}
-          />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() =>
-              navigation.navigate("Home", { sessionId: 45, userId: "22e24",})
-            }
-          ><Text style={styles.titleText}>Войти</Text>
-          </TouchableOpacity>
+          <View style={styles.box}>
+            <View style={styles.header}>
+              <Text style={styles.headerTitle}>Войти</Text>
+            </View>
+            <View style={styles.form}>
+              <KeyboardAvoidingView
+                behavior={Platform.OS == "ios" ? "padding" : "height"}
+              >
+                <View style={{ marginTop: 33, marginBottom: 16 }}>
+                  <TextInput
+                    value={name}
+                    textAlign={"center"}
+                    onChangeText={nameHandler}
+                    placeholder="Логин"
+                    style={styles.input}
+                  />
+                </View>
+                <View style={{ marginBottom: 44 }}>
+                  <TextInput
+                    value={password}
+                    textAlign={"center"}
+                    placeholder="Пароль"
+                    secureTextEntry={true}
+                    onChangeText={passwordHandler}
+                    style={styles.input}
+                  />
+                </View>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() =>
+                    navigation.navigate("Home", {
+                      sessionId: 45,
+                      userId: "22e24",
+                    })
+                  }
+                >
+                  <Text style={styles.titleText}>Войти</Text>
+                </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.text}
-            onPress={() =>
-              navigation.navigate("Registration")
-            }
-          ><Text>Нет аккаунта? Зарегистрироваться</Text>
-          </TouchableOpacity>
-
-        </KeyboardAvoidingView>
-      </View>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Registration")}
+                  style={{ marginTop: 16, alignItems: "center" }}
+                >
+                  <Text
+                    style={{
+                      width: 188,
+                      height: 19,
+                      fontFamily: "Roboto",
+                      fontSize: 16,
+                      color: "#00008b",
+                    }}
+                  >У вас нет аккаунта ? Зарегистрироваться</Text>
+                </TouchableOpacity>
+              </KeyboardAvoidingView>
+            </View>
+          </View>
+        </ImageBackground>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -85,26 +95,33 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ecf0f1",
-  },
-  input: {
-    width: 343,
-    height: 50,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "black",
-    marginBottom: 10,
+    backgroundColor: "#fff",
   },
   image: {
     flex: 1,
+    resizeMode: "cover",
     justifyContent: "center",
-    width: 350,
-  },
-  text: {
     alignItems: "center",
-    padding: 10,
+  },
+  box: {
+    height: 800,
+    width: 400,
+    top: 263,
+    left: 0,
+    backgroundColor: "#FFFFFF",
+    borderTopStartRadius: 25,
+    borderTopEndRadius: 25,
+  },
+  form: {
+    top: 100,
+    marginHorizontal: 16,
+  },
+  input: {
+    backgroundColor: "#F6F6F6",
+    borderWidth: 1,
+    borderColor: "#E8E8E8",
+    borderRadius: 8,
+    height: 50,
   },
   button: {
     backgroundColor: "#FF6C00",
@@ -114,10 +131,27 @@ const styles = StyleSheet.create({
   titleText: {
     color: "#FFFFFF",
     textAlign: "center",
-    fontfamily: "Roboto",
+    fontfamily: "Roboto-Regular",
     fontStyle: "normal",
     marginTop: 15,
     fontSize: 20,
     lineHeight: 19,
+  },
+  header: {
+    alignItems: "center",
+  },
+  headerTitle: {
+    top: 100,
+    fontSize: 30,
+    color: "#212121",
+    fontfamily: "Roboto-Regular",
+  },
+  user: {
+    width: 120,
+    height: 120,
+    borderWidth: 1,
+    borderColor: "black",
+    top: 320,
+    zIndex: 2,
   },
 });

@@ -9,7 +9,6 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  Dimensions,
 } from "react-native";
 
 export default function Registration({ navigation }) {
@@ -21,9 +20,7 @@ export default function Registration({ navigation }) {
   const emailHandler = (text) => setEmail(text);
   const passwordHandler = (text) => setPassword(text);
 
-  // const onRegistrate = () => {
-  //   Alert.alert("Credentials", `${name} + ${email} + ${password}`);
-  // };
+  
   const image = { uri: "https://reactjs.org/logo-og.png" };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -119,7 +116,7 @@ const styles = StyleSheet.create({
   },
   box: {
     height: 1000,
-    minWidth: 355,
+    minWidth: 400,
     maxWidth: 1000,
     top: 263,
     left: 0,

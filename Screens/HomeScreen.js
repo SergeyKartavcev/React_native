@@ -23,6 +23,7 @@ export default function HomeScreen() {
         name="Публикации"
         component={Posts}
         options={{
+          tabBarShowLabel: false,
           tabBarIcon: ({ focused, size, color }) => (
             <MaterialIcons name="grid-view" size={24} color="black" />
           ),
@@ -33,6 +34,7 @@ export default function HomeScreen() {
         name="Создать публикацию"
         component={CreatePost}
         options={{
+          tabBarShowLabel: false,
           tabBarIcon: ({ focused, size, color }) => (
             <AntDesign name="pluscircle" size={35} color="#ffa500" />
           ),
@@ -42,6 +44,7 @@ export default function HomeScreen() {
 
       <Tabs.Screen name="Профиль" component={Profile}
        options={{
+        tabBarShowLabel: false,
         tabBarIcon: ({ focused, size, color }) => (
           <Feather name="user" size={24} color="black" />
         ),
