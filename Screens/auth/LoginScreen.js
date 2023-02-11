@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -14,29 +13,28 @@ import {
   Text,
 } from "react-native";
 
-export default function Registration({ navigation }) {
+export default function Login({ navigation }) {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const nameHandler = (text) => setName(text);
-  const emailHandler = (text) => setEmail(text);
   const passwordHandler = (text) => setPassword(text);
 
-  // const onRegistrate = () => {
-  //   Alert.alert("Credentials", `${name} + ${email} + ${password}`);
+  // const onLogin = () => {
+  //   Alert.alert("Credentials", `${name} + ${password}`);
   // };
+
   const image = { uri: "https://reactjs.org/logo-og.png" };
+  
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-   
-          <Image
-            source={require("../image/PhotoBG.png")}
+      <View style={styles.container}>  
+      <Image
+            source={require("../../image/PhotoBG.png")}
             resizeMode="cover"
             style={styles.image}
           ></Image>
-         <View style={{
+                 <View style={{
         flexDirection: 'row',
         height: 349,
         padding: 20,
@@ -48,17 +46,10 @@ export default function Registration({ navigation }) {
         <KeyboardAvoidingView
           behavior={Platform.OS == "ios" ? "padding" : "height"}
         >
-        
           <TextInput
             value={name}
             onChangeText={nameHandler}
             placeholder="Username"
-            style={styles.input}
-          />
-          <TextInput
-            value={email}
-            onChangeText={emailHandler}
-            placeholder="Usermail"
             style={styles.input}
           />
           <TextInput
@@ -68,24 +59,24 @@ export default function Registration({ navigation }) {
             secureTextEntry={true}
             style={styles.input}
           />
-
           <TouchableOpacity
             style={styles.button}
             onPress={() =>
-              navigation.navigate("Home", { sessionId: 45, userId: "22e24" })
+              navigation.navigate("Home", { sessionId: 45, userId: "22e24",})
             }
-          ><Text style={styles.titleText}>Зарегистрироваться</Text>
-
+          ><Text style={styles.titleText}>Войти</Text>
           </TouchableOpacity>
+
           <TouchableOpacity
             style={styles.text}
             onPress={() =>
-              navigation.navigate("Login", { sessionId: 45, userId: "22e24" })
+              navigation.navigate("Registration")
             }
-          >
-            <Text>У вас уже есть аккаунт? Войти</Text>
+          ><Text>Нет аккаунта? Зарегистрироваться</Text>
           </TouchableOpacity>
-        </KeyboardAvoidingView></View>
+
+        </KeyboardAvoidingView>
+      </View>
       </View>
     </TouchableWithoutFeedback>
   );
@@ -103,7 +94,6 @@ const styles = StyleSheet.create({
     height: 50,
     padding: 10,
     borderWidth: 1,
-    borderRadius: 10,
     borderColor: "black",
     marginBottom: 10,
   },
