@@ -9,7 +9,10 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Dimensions
 } from "react-native";
+
+
 
 export default function Registration({ navigation }) {
   const [name, setName] = useState("");
@@ -22,11 +25,12 @@ export default function Registration({ navigation }) {
 
   
   const image = { uri: "https://reactjs.org/logo-og.png" };
+  
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <ImageBackground
-          source={require("../../image/PhotoBG.png")}
+          source={require("../../assets/PhotoBG.png")}
           style={styles.image}
         >
           <View style={styles.user}></View>
@@ -80,7 +84,7 @@ export default function Registration({ navigation }) {
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("Login")}
-                  style={{ marginTop: 16, alignItems: "center" }}
+                  style={{ marginTop: 16, alignItems: "center",  }}
                 >
                   <Text
                     style={{
@@ -116,8 +120,7 @@ const styles = StyleSheet.create({
   },
   box: {
     height: 1000,
-    minWidth: 400,
-    maxWidth: 1000,
+    width: "100%",
     top: 263,
     left: 0,
     backgroundColor: "#FFFFFF",
@@ -126,7 +129,8 @@ const styles = StyleSheet.create({
   },
   form: {
     top: 100,
-    marginHorizontal: 16,
+    width: Dimensions.get("window").width,
+   
   },
   input: {
     backgroundColor: "#F6F6F6",
@@ -134,11 +138,13 @@ const styles = StyleSheet.create({
     borderColor: "#E8E8E8",
     borderRadius: 8,
     height: 50,
+    marginHorizontal: 16,
   },
   button: {
     backgroundColor: "#FF6C00",
     height: 51,
     borderRadius: 50,
+    marginHorizontal: 16,
   },
   titleText: {
     color: "#FFFFFF",

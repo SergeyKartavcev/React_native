@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
-import { max } from "react-native-reanimated";
+
 
 export default function Login({ navigation }) {
   const [name, setName] = useState("");
@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <ImageBackground
-          source={require("../../image/PhotoBG.png")}
+          source={require("../../assets/PhotoBG.png")}
           resizeMode="cover"
           style={styles.image}
         >
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   },
   box: {
     height: 800,
-    width: 400,
+    width: "100%",
     top: 263,
     left: 0,
     backgroundColor: "#FFFFFF",

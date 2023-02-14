@@ -1,17 +1,20 @@
 import React from "react";
-import { Button } from "react-native";
+import {Button} from "react-native"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./Screens/auth/LoginScreen";
 import Registration from "./Screens/auth/RegistrationScreen";
-import HomeScreen from "./Screens/HomeScreen";
-import CreatePost from "./Screens/CreatePostsScreen";
-import Profile from "./Screens/ProfileScreen";
-import Posts from "./Screens/PostsScreen";
+import HomeScreen from "./Screens/mainScreens/HomeScreen";
+import CreatePost from "./Screens/mainScreens/CreatePostsScreen";
+// import Profile from "./Screens/mainScreens/ProfileScreen";
+import Posts from "./Screens/mainScreens/PostsScreen";
+import MapScreen from "./Screens/mainScreens/MapScreen";
+import CommentsScreen from "./Screens/mainScreens/CommentsScreen"
 
 const MainStack = createStackNavigator();
 
-export default () => {
+export default function App () {
+
   return (
     <NavigationContainer>
       <MainStack.Navigator initialRouteName="Registration">
@@ -24,23 +27,15 @@ export default () => {
         options={{ headerShown: false }}/>
 
         <MainStack.Screen name="Home" component={HomeScreen}
-        options={{ headerShown: false }}/>
-        <MainStack.Screen name="Публикации" component={Posts}
-      
-        options={{  headerStyle: {backgroundColor: "#FFFFFF",}, headerRight: () => (
-          <Button
-            onPress={() => alert('This is a button!')}
-            title="Info"
-            color="red"
-          />
-        ), }} />
-        <MainStack.Screen name="Создать пост" component={CreatePost}
-        options={{ headerStyle: {backgroundColor: "#FFFFFF",} }} />
-        <MainStack.Screen name="Профиль" component={Profile}
-        options={{ title: "Войти", headerStyle: {backgroundColor: "#FFFFFF",} }} />
-        
+      options={{
+     headerShown: false,
+      }}/>
+
+        <MainStack.Screen name="Публикации" component={Posts}/>
+        <MainStack.Screen name="Создать пост" component={CreatePost}/>
+        <MainStack.Screen name="Карта" component={MapScreen} />
+        <MainStack.Screen name="Коментарии" component={CommentsScreen} />
       </MainStack.Navigator>
     </NavigationContainer>
   );
 };
-
